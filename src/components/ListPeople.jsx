@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 const ListPeople = ({ employees, removeEmployee }) => {
   return (
@@ -25,5 +26,14 @@ const ListPeople = ({ employees, removeEmployee }) => {
   )
 }
 
+ListPeople.propTypes = {
+  employees: PropTypes.array,
+  removeEmployee: PropTypes.func
+}
+
+ListPeople.defaultProps = {
+  employees: [],
+  removeEmployee: () => undefined
+}
 
 export default ListPeople;

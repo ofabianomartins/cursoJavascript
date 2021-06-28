@@ -1,5 +1,5 @@
 import React from "react"
-
+import PropTypes from "prop-types"
 
 const FormPeople = ({ addEmployee, ...props }) => {
   const [name, setName] = React.useState("")
@@ -35,6 +35,14 @@ const FormPeople = ({ addEmployee, ...props }) => {
       </article>
     </section>
   )
+}
+
+FormPeople.propTypes = {
+  addEmployee: PropTypes.func
+}
+
+FormPeople.defaultProps = {
+  addEmployee: () => undefined
 }
 
 export default FormPeople
