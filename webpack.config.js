@@ -9,7 +9,7 @@ const webpack = require("webpack")
 
 const srcDir        = path.join(__dirname,"./src")
 const distDir       = path.join(__dirname,"./build") // pode usar a dist
-const entry         = path.join(srcDir, "index.js" )
+const entry         = path.join(srcDir, "index.jsx" )
 const srcHtmlLayout = path.join(__dirname, "index.html")
 
 module.exports = {
@@ -25,9 +25,6 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".json"],
     modules: [ "node_modules", srcDir ],
-    alias: {
-      "react-dom": "@hot-loader/react-dom"
-    }
   },
   plugins: [
     new HtmlWebpackPlugin({
