@@ -1,5 +1,8 @@
 import React from "react"
+import { connect } from "react-redux"
 import PropTypes from "prop-types"
+
+import EmployeeDuck from "../ducks/EmployeeDuck"
 
 const ListPeople = ({ employees, removeEmployee }) => {
   return (
@@ -36,4 +39,18 @@ ListPeople.defaultProps = {
   removeEmployee: () => undefined
 }
 
-export default ListPeople;
+// Camada de integração do componente com o redux
+// Mapear Dados para o props
+const mapStateToProps = (store) => ({
+  employees: store.employees.employees
+})
+
+// Mapear Actions para o props
+const mapDispatchToProps = (dispatch) => ({
+  removeEmployee: (idx) => dispatch(
+    EmployeeDuck.creators.removeEmployee(idx)
+    // ({ type: ...., name, age })
+  ) 
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListPeople);

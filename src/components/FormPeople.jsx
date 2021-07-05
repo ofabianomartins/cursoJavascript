@@ -1,5 +1,8 @@
 import React from "react"
+import { connect } from "react-redux"
 import PropTypes from "prop-types"
+
+import EmployeeDuck from "../ducks/EmployeeDuck"
 
 const FormPeople = ({ addEmployee, ...props }) => {
   const [name, setName] = React.useState("")
@@ -45,4 +48,16 @@ FormPeople.defaultProps = {
   addEmployee: () => undefined
 }
 
-export default FormPeople
+// Camada de integração do componente com o redux
+// Mapear Dados para o props
+const mapStateToProps = () => ({})
+
+// Mapear Actions para o props
+const mapDispatchToProps = (dispatch) => ({
+  addEmployee: ({ name, age }) => dispatch(
+    EmployeeDuck.creators.addEmployee(name, age)
+    // ({ type: ...., name, age })
+  ) 
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormPeople)
